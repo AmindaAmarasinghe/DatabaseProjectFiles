@@ -1,1 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+/*  import google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+body{
+  background-color: deepskyblue;
+}
+.carousel-indicators li{
+    width: 35px!important;
+    height: 35px!important;
+    -webkit-border-radius: 36px!important;
+    -moz-border-radius: 36px!important;
+    border-radius: 50%!important;
+    background-color: rgb(18, 68, 160)!important;
+    //border-color: darkblue!important;
+    
+    //margin-left: 20px!important;
+   
+}
+
+.carousel-indicators {
+   // background: rgb(228, 59, 29)!important;
+    margin-bottom: -40px;
+    height: 35px;
+    opacity: 1;
+}
+.carousel-indicators .active{
+   // background-color: rgb(3, 22, 73)!important;
+   box-shadow: blueviolet;
+   
+}
+.ps > .ps__rail-x,
+.ps > .ps__rail-y {
+  opacity: 1!important;
+}
+.arrow-down-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: black;
+    z-index: 100;
+  }
+
+  .arrow-up-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color:black;
+    z-index: 100;
+  }
+  .perfect-scrollbar {
+    .ps > .ps__scrollbar-y-rail > .ps__scrollbar-y {
+      background-color: red;
+      width: 30px!important;
+    }
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

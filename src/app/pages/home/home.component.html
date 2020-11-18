@@ -1,0 +1,20 @@
+<div class="slider"><app-slider></app-slider></div>
+
+<div class="nav1">
+    <div class="head">
+        <button id="course-btn" mat-button (click)="course()">Courses</button>
+        <button mat-button  (click)="nocourse();about();">About us</button>
+        <span>CO100 - Computer Programming</span><a  mat-button (click)="more();" style="float: right; color: rgb(236, 195, 181);">View more</a>
+    </div>
+    <div class="content">
+        <div class="course-list close" id="course-list-id">
+            <button mat-button class="list" id="l1" (click)="noabout()">Courses1</button><br>
+            <button mat-button class="list" (click)="noabout()">Courses2</button><br>
+            <button mat-button class="list" (click)="noabout()">Courses3</button><br>
+            <button mat-button class="list" (click)="noabout()">Courses4</button><br>
+            <button mat-button class="list" (click)="noabout()">Courses5</button>
+        </div>
+        
+        <div class="about" id="about">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis atque consequatur provident, nobis laborum autem? Laborum officia, sed laudantium nulla inventore iste. Nihil vitae iste repudiandae dolorum maxime quos laborum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem quos adipisci dolorum unde eaque nam iure ex expedita tempora cupiditate earum harum, quae dolores assumenda. Animi consectetur odit voluptate eum.</div>
+    </div>
+</div>

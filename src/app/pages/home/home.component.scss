@@ -1,0 +1,66 @@
+.slider{
+    margin-top: 10%;
+}
+.nav1{
+    background: rgb(6, 56, 163);
+    height: 50%;
+    width: 70%;
+    margin-top: 5%;
+    margin-left: 15%;
+    margin-bottom: 1%;
+
+    overflow: scroll;
+    .head{
+        height: 40px;
+        
+        button{
+            width: 200px;
+            background: rgb(180, 7, 102);
+            color: ivory;
+        }
+        span{
+            padding: 5%;
+            color: bisque;
+        }
+    }
+    .content{
+        padding-bottom: 3%;
+        display: flex;
+        background-image: url(../../../assets/img/2.jpg);
+        padding-top: 5%;
+        background-size: fill;
+        
+        .course-list{
+            
+            float: left;
+            button{
+                width: 200px;
+                background: rgb(182, 52, 123);
+                color: ivory;
+                font-size: 20px;
+            }
+            button:hover{
+                
+                background: rgb(182, 52, 123);
+                color: rgb(189, 189, 11);
+                
+            }
+        }
+        .about{
+            float: right;
+            margin-left: 5%;
+            color: cornsilk;
+            margin-right: 5%;
+        }
+        
+    }
+}
+// #course-list-id{
+//     display: none;
+// }
+.close{
+    display: none;
+}
+// .open{
+//     display: block;
+// }

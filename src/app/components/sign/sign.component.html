@@ -1,0 +1,109 @@
+
+<div class="signfrm">
+    
+    <h1 style="color: rgb(138, 8, 34);" #head1>STUDENT REGISTRATION</h1>
+    
+    <form [formGroup]="SignForm" (ngSubmit)="onSubmit();">
+        <div id="namefield">
+            <h3>ENTER YOUR NAME</h3>
+            <mat-form-field appearance="fill" >
+                <input id="username1"
+                    matInput
+                    formControlName="name1"
+                    
+                    placeholder="First Name" #message1 required >
+            </mat-form-field>
+            <mat-form-field appearance="fill" >
+                <input id="username2"
+                    matInput
+                    formControlName="name2"
+                    
+                    placeholder="Last name" #message2 required >
+            </mat-form-field>
+            
+         </div>
+         <mat-divider style="width: 40%;"></mat-divider><br>
+        <div id="contactfield">
+            <h3>EMAIL ADDRESS</h3>
+            <mat-form-field appearance="fill" >
+                <input id="contact"
+                    matInput
+                    formControlName="contact"
+                    
+                    placeholder="Enter your email" required >
+            </mat-form-field>
+            
+        </div>
+        <mat-divider style="width: 40%;"></mat-divider><br>
+        
+        <div id="addressfield">
+            <h3>Home Address</h3>
+            <mat-form-field appearance="fill" >
+                <input id="address1"
+                    matInput
+                    formControlName="address1"
+                    
+                    placeholder="AddressLine1" required >
+            </mat-form-field>
+            <mat-form-field appearance="fill" >
+                <input id="address2"
+                    matInput
+                    formControlName="address2"
+                    
+                    placeholder="AddressLine2" required >
+            </mat-form-field>
+            
+        </div>
+         
+        <div id="datefield">
+            <h3>Enter your Birth date</h3>
+            <mat-form-field appearance="fill">
+              <mat-label>Birthday</mat-label>
+              <input matInput [matDatepicker]="dp3" disabled>
+              <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+              <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <mat-divider style="width: 40%;"></mat-divider><br>
+        <h3>Gender</h3>
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Male</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-radio-button value="2">Female</mat-radio-button>
+          </mat-radio-group>
+          <br>
+          <mat-divider style="width: 40%;"></mat-divider><br>
+        <div id="passwordfield">
+            <h3>Create Password</h3>
+            <mat-form-field appearance="fill"> 
+                <input id="password"
+                    [type]="hide ? 'password' : 'text'"
+                    matInput
+                    formControlName="password"
+                    
+                    placeholder="password" required >
+                    
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+            </mat-form-field>
+        </div>
+        <mat-divider style="width: 40%;"></mat-divider>
+        <div id="re-passwordfield">
+            <h3>Confirm password</h3>
+            <mat-form-field appearance="fill"> 
+                <input id="re-password"
+                    [type]="hide ? 'password' : 'text'"
+                    matInput
+                    formControlName="re-password"
+                    
+                    placeholder="confirm password" required >
+                    
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+            </mat-form-field>
+        </div>
+        
+        <button type="submit" mat-raised-button  style="background: chartreuse;">REGISTER</button> 
+    </form>
+</div>
