@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Student } from '../../model/student.model'
+import { Logger } from '../../model/logger.model'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
-
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+//import * as jsondata from '../../../../../../../../xampp/htdocs/CO226/project/loginResult.json';
 
 
 @Component({
@@ -13,15 +15,28 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  student:Student = new Student();
+  user:Logger = new Logger();
   LoginForm : FormGroup;
+  logged : boolean = false;
+  data;
   hide = true;
   submitted= false;
-  constructor(private http:HttpClient, private formBuilder:FormBuilder, private _snackBar: MatSnackBar,public dialog: MatDialog) { }
+  constructor(private http:HttpClient,private router:Router, private formBuilder:FormBuilder, private _snackBar: MatSnackBar,public dialog: MatDialog) { 
+    
+     
+   
+    
+        
+  }
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 2000,
     });
+  }
+  public getData(){
+    this.http.get('http://localhost:81/CO226/project/loginResult.json/data')
+            .subscribe(result => this.data = result);
+            console.dir(this.data);
   }
   onSubmit(){
     //this.firebaseService.createUser(value, this.avatarLink)
@@ -29,6 +44,13 @@ export class LoginComponent implements OnInit {
     //alert("hi")
     
     //this.resetFields();
+    if(this.LoginForm.value.username == null || this.LoginForm.value.password == null){
+    Swal.fire({
+      title: 'Incomplete',
+      text: 'please fill all fields required',
+      icon: 'warning'
+    })
+  }else{
     this.dialog.closeAll();
     this.openSnackBar('Login as ', 'OK')
     
@@ -39,22 +61,33 @@ export class LoginComponent implements OnInit {
     var myFormdata = new FormData();
     myFormdata.append('myusername',this.LoginForm.value.username);
     myFormdata.append('myemail',this.LoginForm.value.password);
-    
-    return this.http.post('http://localhost:81/CO226/project/save.php/', myFormdata).subscribe((res: Response)=>{
-      
+    this.router.navigate(['student',this.LoginForm.value.username]);
+    return this.http.post('http://localhost:81/CO226/project/login.php/', myFormdata).subscribe((res: Response)=>{
+     
     })
-
   }
+  }
+  get formAltaControls(): any {
+    return this.LoginForm['controls'];
+  } 
 
   ngOnInit(): void {
     this.LoginForm = this.formBuilder.group({
-      'username':[this.student.name,[
+      'username':[this.user.username,[
           Validators.required
       ]],
-      'password':[this.student.pwd,[
+      'password':[this.user.pwd,[
         Validators.required
     ]]
     })
+    this.http.get<any>('co226/project/loginResult.json').subscribe(result => this.data = result);
+    console.log(this.data);
+  //  this.getData();
+   
+    /*if(jsondata.data == "logged successully"){
+      this.logged = true;
+      console.log(this.logged);
+    }*/
   }
   //get email() { return this.LoginForm.get('username'); }
   //get password() { return this.LoginForm.get('password'); }

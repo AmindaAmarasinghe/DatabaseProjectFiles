@@ -28,6 +28,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './pages/admin/admin.component';
+import { CourcesComponent } from './pages/cources/cources.component';
+import { TeacherComponent } from './pages/teacher/teacher.component';
+import { StudentComponent } from './pages/student/student.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { AdminComponent } from './pages/admin/admin.component';
     LoginComponent,
     SliderComponent,
     SignComponent,
-    AdminComponent
+    AdminComponent,
+    CourcesComponent,
+    TeacherComponent,
+    StudentComponent
   ],
   imports: [
     BrowserModule,

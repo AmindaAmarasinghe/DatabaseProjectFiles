@@ -1,0 +1,7 @@
+{
+    "/CO226/project/*":{
+        "target":"http://localhost:81",
+        "secure":false,
+        "changeOrigin": false
+    }
+}

@@ -9,10 +9,13 @@
                 <input id="username"
                     matInput
                     formControlName="username"
-                    [(ngModel)]="student.name"
+                    
                     placeholder="Enter your name" #message required >
             </mat-form-field>
-            
+            <div *ngIf="formAltaControls.username.invalid && (formAltaControls.username.dirty)" class="alert alert-danger form-danger" role="alert">please fill this field</div>
+            <!-- <div *ngIf="formAltaControls.username.errors.required">
+                El Nom del professional es obligatori
+            </div> -->
         </div>
         
         <div id="passwordfield">
@@ -22,13 +25,14 @@
                     [type]="hide ? 'password' : 'text'"
                     matInput
                     formControlName="password"
-                    [(ngModel)]="student.pwd"
+                    
                     placeholder="password" required >
                     
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
             </mat-form-field>
+            <div *ngIf="formAltaControls.password.invalid && (formAltaControls.password.dirty)" class="alert alert-danger form-danger" role="alert">please fill this field</div>
         </div>
         <button mat-raised-button id="login-btn" (click)="onSubmit();" style="background: chartreuse;">Login</button>
     </form>
