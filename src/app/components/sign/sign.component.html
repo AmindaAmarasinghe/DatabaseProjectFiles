@@ -1,36 +1,39 @@
 
 <div class="signfrm">
     
-    <h1 style="color: rgb(138, 8, 34);" #head1>STUDENT REGISTRATION</h1>
+    <h1 style="color: rgb(174, 192, 11);" #head1>STUDENT REGISTRATION</h1>
     
     <form [formGroup]="SignForm" >
         <div id="namefield">
             <h3>ENTER YOUR NAME</h3>
-            <mat-form-field appearance="fill" >
+            <mat-form-field appearance="legacy">
                 <input id="name1"
                     matInput
                     formControlName="name1"
                     
-                    placeholder="First Name"  required >
+                    required >
+                    <mat-placeholder class="placeholder">First Name</mat-placeholder>  
             </mat-form-field>
-            <mat-form-field appearance="fill" >
+            <mat-form-field appearance="legacy" >
                 <input id="name2"
                     matInput
                     formControlName="name2"
                    
-                    placeholder="Last name"  required >
+                    required >
+                    <mat-placeholder class="placeholder">Last name</mat-placeholder>  
             </mat-form-field>
             
          </div>
          <mat-divider style="width: 40%;"></mat-divider><br>
         <div id="contactfield">
             <h3>EMAIL ADDRESS</h3>
-            <mat-form-field appearance="fill" >
+            <mat-form-field appearance="legacy" >
                 <input id="contact"
                     matInput
                     formControlName="contact"
                     
-                    placeholder="Enter your email" required >
+                    required >
+                    <mat-placeholder class="placeholder">Enter your email</mat-placeholder>  
             </mat-form-field>
             
         </div>
@@ -38,27 +41,29 @@
         
         <div id="addressfield">
             <h3>Home Address</h3>
-            <mat-form-field appearance="fill" >
+            <mat-form-field appearance="legacy" >
                 <input id="address1"
                     matInput
                     formControlName="address1"
                 
-                    placeholder="AddressLine1" required >
+                    required >
+                    <mat-placeholder class="placeholder">AddressLine1</mat-placeholder>  
             </mat-form-field>
-            <mat-form-field appearance="fill" >
+            <mat-form-field appearance="legacy" >
                 <input id="address2"
                     matInput
                     formControlName="address2"
                    
-                    placeholder="AddressLine2" required >
+                    required >
+                    <mat-placeholder class="placeholder">AddressLine2</mat-placeholder>  
             </mat-form-field>
             
         </div>
          
         <div id="datefield">
             <h3>Enter your Birth date</h3>
-            <mat-form-field appearance="fill">
-              <mat-label>Birthday</mat-label>
+            <mat-form-field appearance="legacy">
+                <mat-placeholder class="placeholder">Birthday</mat-placeholder>  
               <input matInput [matDatepicker]="dp3" disabled (dateChange)="dateFormat($event.value,'dp3')">
               <mat-datepicker-toggle matSuffix [for]="dp3" ></mat-datepicker-toggle>
               <mat-datepicker #dp3 disabled="false"></mat-datepicker>
@@ -80,13 +85,14 @@
           <mat-divider style="width: 40%;"></mat-divider><br>
         <div id="passwordfield">
             <h3>Create Password</h3>
-            <mat-form-field appearance="fill"> 
+            <mat-form-field appearance="legacy"> 
                 <input id="password"
                     [type]="hide ? 'password' : 'text'"
                     matInput
                     formControlName="password"
                    
-                    placeholder="password" required >
+                    required >
+                    <mat-placeholder class="placeholder">password</mat-placeholder>  
                     
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -96,13 +102,14 @@
         <mat-divider style="width: 40%;"></mat-divider>
         <div id="re-passwordfield">
             <h3>Confirm password</h3>
-            <mat-form-field appearance="fill"> 
+            <mat-form-field appearance="legacy"> 
                 <input id="repassword"
                     [type]="hide ? 'password' : 'text'"
                     matInput
                     formControlName="repassword"
                     
-                    placeholder="confirm password" required >
+                    required >
+                    <mat-placeholder class="placeholder">confirm password</mat-placeholder>  
                     
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -110,6 +117,6 @@
             </mat-form-field>
         </div>
         
-        <button (click)="onSubmit()" mat-raised-button  style="background: chartreuse;">REGISTER</button> 
+        <button (click)="onSubmit()" mat-raised-button  style="background: rgb(182, 17, 113); color: blanchedalmond;border: 2PX solid #c7ca0f;">REGISTER</button> 
     </form>
 </div>

@@ -1,0 +1,11 @@
+.card:nth-child(even){
+    background: tomato;
+}
+.card:nth-child(odd){
+    background: rgb(167, 54, 20);
+    color: rgb(226, 191, 34);
+}
+button{
+    background: aqua;
+    color: #000;
+}

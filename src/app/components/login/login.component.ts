@@ -6,6 +6,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { SharedServiceService} from 'src/app/services/shared-service.service';
+
 //import * as jsondata from '../../../../../../../../xampp/htdocs/CO226/project/loginResult.json';
 
 
@@ -18,12 +20,13 @@ export class LoginComponent implements OnInit {
   user:Logger = new Logger();
   LoginForm : FormGroup;
   logged : boolean = false;
-  data;
+  result =[];
   hide = true;
+  data;
   submitted= false;
-  constructor(private http:HttpClient,private router:Router, private formBuilder:FormBuilder, private _snackBar: MatSnackBar,public dialog: MatDialog) { 
+  constructor(private http:HttpClient,private sharedService: SharedServiceService, private router:Router, private formBuilder:FormBuilder, private _snackBar: MatSnackBar,public dialog: MatDialog) { 
     
-     
+    
    
     
         
@@ -52,25 +55,39 @@ export class LoginComponent implements OnInit {
     })
   }else{
     this.dialog.closeAll();
-    this.openSnackBar('Login as ', 'OK')
+    this.openSnackBar('Login as '+this.LoginForm.value.username, 'OK')
+    //this.logged = true;
     
     this.submitted = true;
-    
+    this.sharedService.sendEvent();
     console.log(this.LoginForm.value);
     
     var myFormdata = new FormData();
     myFormdata.append('myusername',this.LoginForm.value.username);
-    myFormdata.append('myemail',this.LoginForm.value.password);
+    myFormdata.append('mypwd',this.LoginForm.value.password);
     this.router.navigate(['student',this.LoginForm.value.username]);
-    return this.http.post('http://localhost:81/CO226/project/login.php/', myFormdata).subscribe((res: Response)=>{
+    this.http.post('http://localhost:81/CO226/project/login.php/', myFormdata).subscribe((res: Response)=>{
      
     })
+    this.http.get('http://localhost:81/CO226/project/login.php').subscribe(data=>{
+      this.result.push(data);
+      
+      
+    }, error=>console.error(error));
+    console.log(this.result);
+    
   }
   }
   get formAltaControls(): any {
     return this.LoginForm['controls'];
   } 
-
+  follow(){
+    var myFormdata1 = new FormData();
+    myFormdata1.append('myusername',this.LoginForm.value.username);
+    return this.http.post('http://localhost:81/CO226/project/mycources.php/', myFormdata1).subscribe((res: Response)=>{
+     console.log(res);
+    })
+  }
   ngOnInit(): void {
     this.LoginForm = this.formBuilder.group({
       'username':[this.user.username,[
@@ -80,8 +97,10 @@ export class LoginComponent implements OnInit {
         Validators.required
     ]]
     })
-    this.http.get<any>('co226/project/loginResult.json').subscribe(result => this.data = result);
-    console.log(this.data);
+   
+
+    //this.http.get<any>('co226/project/loginResult.json').subscribe(result => this.data = result);
+    //console.log(this.data);
   //  this.getData();
    
     /*if(jsondata.data == "logged successully"){

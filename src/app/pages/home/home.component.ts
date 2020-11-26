@@ -1,3 +1,5 @@
+import { HttpClient } from '@angular/common/http';
+import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { LoginComponent } from 'src/app/components/login/login.component';
@@ -8,8 +10,14 @@ import { LoginComponent } from 'src/app/components/login/login.component';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(public dialog1: MatDialog) { }
+  data=[];
+  constructor(public dialog1: MatDialog, private http: HttpClient) { 
+    this.http.get('http://localhost:81/CO226/project/coursesintro.php').subscribe(data=>{
+      this.data.push(data);
+      
+      
+    }, error=>console.error(error));
+  }
   course(){
     const list = document.getElementById('course-list-id');
     list.classList.remove('close');

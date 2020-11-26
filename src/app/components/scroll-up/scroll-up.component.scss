@@ -1,0 +1,17 @@
+.scroll-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    opacity: 0;
+    transition: all .2s ease-in-out;
+    z-index: 99;
+   }
+   .show-scrollTop {
+    opacity: 1;
+    transition: all .2s ease-in-out;
+   }
+#top{
+    cursor: pointer;
+    background: rgb(12, 180, 63);
+}

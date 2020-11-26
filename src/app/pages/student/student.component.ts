@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,12 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./student.component.scss']
 })
 export class StudentComponent implements OnInit {
-  mysubjects=[
-    {id: 'co100', name: 'pp'},
-    {id: 'co101', name: 'po'}
-
-  ]
-  constructor() { }
+  mysubjects=[];
+  constructor(private http: HttpClient) {
+    //this.http.get('http://localhost:81/CO226/project/coursesintro.php').subscribe(data=>{
+     // this.mysubjects.push(data);
+      
+      
+    //}, error=>console.error(error));
+    this.http.get('http://localhost:81/CO226/project/mycources.php').subscribe(data=>{
+      this.mysubjects.push(data);
+      
+      
+    }, error=>console.error(error));
+   }
 
   ngOnInit(): void {
   }

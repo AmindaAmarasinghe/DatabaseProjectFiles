@@ -1,6 +1,6 @@
 <div class="mycourses">
     <button mat-raised-button disabled style="background: rgb(8, 5, 182); color: pink;"><h2>My Courses</h2></button>
-    <div class="mylist" *ngFor="let mysubject of mysubjects">
+    <div class="mylist" *ngFor="let mysubject of mysubjects[0]">
         
         <button mat-raised-button style="background: dodgerblue; width: 30%;">{{mysubject.id}}:&nbsp;&nbsp;&nbsp;{{mysubject.name}}</button>
     </div>

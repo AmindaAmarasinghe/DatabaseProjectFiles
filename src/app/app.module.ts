@@ -10,6 +10,8 @@ import { LoginComponent } from './components/login/login.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
@@ -31,6 +33,8 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { CourcesComponent } from './pages/cources/cources.component';
 import { TeacherComponent } from './pages/teacher/teacher.component';
 import { StudentComponent } from './pages/student/student.component';
+import { ScrollUpComponent } from './components/scroll-up/scroll-up.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,9 @@ import { StudentComponent } from './pages/student/student.component';
     AdminComponent,
     CourcesComponent,
     TeacherComponent,
-    StudentComponent
+    StudentComponent,
+    ScrollUpComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +66,7 @@ import { StudentComponent } from './pages/student/student.component';
     MatInputModule,
     FormsModule,
     MatIconModule,
+    MatCardModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
     MatDatepickerModule,
@@ -69,6 +76,7 @@ import { StudentComponent } from './pages/student/student.component';
     MatCheckboxModule,
     MatNativeDateModule,
     MatListModule,
+    MatTabsModule
 
   ],
   providers: [],

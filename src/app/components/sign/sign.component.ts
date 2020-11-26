@@ -7,6 +7,8 @@ import Swal from 'sweetalert2/dist/sweetalert2.all.min.js';
 import { Moment}  from 'moment';
 import * as moment from 'moment';
 import { Router} from '@angular/router';
+import { SharedServiceService } from 'src/app/services/shared-service.service';
+
 @Component({
   selector: 'app-sign',
   templateUrl: './sign.component.html',
@@ -33,13 +35,18 @@ export class SignComponent implements OnInit {
   defaultValue;
   data;
   moment : Moment;
-  constructor(private formBuilder1:FormBuilder, private http: HttpClient, private router: Router) { }
+  
+  myDate: string
+  constructor(private formBuilder1:FormBuilder, private http: HttpClient, private router: Router, private sharedService : SharedServiceService) { 
+    
+  }
   
   SignForm : FormGroup;
   onSubmit(){
     let newdateValue = moment(this.SignForm.get('dp3').value).format("YYYY-MM-DD");
+    this.myDate = moment(new Date()).format("YYYY-MM-DD");
     this.SignForm.get('dp3').setValue(newdateValue);
-    //console.log(this.SignForm.value);
+    console.log(this.SignForm.value);
     if(this.SignForm.value.name1 == null || this.SignForm.value.gender == null || this.SignForm.value.name2 == null || this.SignForm.value.contact ==null || this.SignForm.value.address1 == null || this.SignForm.value.address2 == null || this.SignForm.value.dp3== null|| this.SignForm.value.password ==null|| this.SignForm.value.repassword == null){
       Swal.fire({
         title: 'Incomplete',
@@ -69,9 +76,10 @@ export class SignComponent implements OnInit {
         icon: 'success'
       }
     )
-    this.router.navigate(['/cources']);
+    
     var myFormdata = new FormData();
-    myFormdata.append('index',"ST"+this.registered_num.toString());
+    console.log(this.myDate);
+    this.sharedService.sendEvent();
     myFormdata.append('firstname',this.SignForm.value.name1);
     myFormdata.append('lastname',this.SignForm.value.name2);
     myFormdata.append('myemail',this.SignForm.value.contact);
@@ -80,6 +88,8 @@ export class SignComponent implements OnInit {
     myFormdata.append('birthdate',this.SignForm.value.dp3);
     myFormdata.append('pwd',this.SignForm.value.password);
     myFormdata.append('gender',this.SignForm.value.gender);
+    //myFormdata.append('regdate',this.myDate);
+    this.router.navigate(['/cources']);
     return this.http.post('http://localhost:81/CO226/project/registration.php/',  myFormdata).subscribe((res: Response)=>{
       
     })

@@ -1,11 +1,11 @@
 
 <div class="loginfrm">
     
-    
+    <h2>LOGIN</h2>
     <form [formGroup]="LoginForm">
         <div id="namefield">
             <h3>username</h3>
-            <mat-form-field appearance="fill" >
+            <mat-form-field appearance="outline" >
                 <input id="username"
                     matInput
                     formControlName="username"
@@ -20,7 +20,7 @@
         
         <div id="passwordfield">
             <h3>password</h3>
-            <mat-form-field appearance="fill"> 
+            <mat-form-field appearance="outline"> 
                 <input id="password"
                     [type]="hide ? 'password' : 'text'"
                     matInput

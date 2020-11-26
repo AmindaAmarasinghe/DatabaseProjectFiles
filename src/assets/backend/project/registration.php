@@ -7,7 +7,7 @@ header("Content-Type: application/json; charset=UTF-8");
 $servername = "localhost:3307";
 $username = "root";
 $password = "";
-$dbname = "angdb";
+$dbname = "project";
 
 $conn = new mysqli($servername,$username,$password,$dbname);
 if ($conn->connect_error) {
@@ -17,17 +17,21 @@ if ($conn->connect_error) {
 if(isset($_POST['firstname'])){
     
 
-    //Read more: http://mrbool.com/how-to-insert-retrieve-json-data-to-from-database-using-php/36810#ixzz6eXiakSBh
     $fp = fopen('studRecords.json', 'w');
     
-    $sql = "INSERT INTO test (studentId, name1, name2, contact, address1, address2, pwd, gender, birthdate) values ('".$_POST['index']."','".$_POST['firstname']."','".$_POST['lastname']."','".$_POST['myemail']."','".$_POST['address1']."','".$_POST['address2']."','".$_POST['pwd']."','".$_POST['gender']."','".$_POST['birthdate']."')";
+    $sql = "INSERT INTO student (StudentId, Firstname, Lastname, Contact, Addressline1, Addressline2, Spassword, Sex, BirthDate) values ('undefined','".$_POST['firstname']."','".$_POST['lastname']."','".$_POST['myemail']."','".$_POST['address1']."','".$_POST['address2']."','".$_POST['pwd']."','".$_POST['gender']."','".$_POST['birthdate']."')";
     $data_array = array(); 
+    
     //while($rows =mysqli_fetch_assoc(mysqli_query($conn,$sql))) { $data_array[] = $rows; }
     if (mysqli_query($conn,$sql)) {
         $data = array("data" => "Your Data added successfully");
+        $sql1 = "UPDATE Student set StudentId=concat('ST',indexNo)";
+        mysqli_query($sql1,$conn);
         echo json_encode($data);
         fwrite($fp, json_encode($data));
-        echo "Data Retrieved Successully!!!";
+       // $sql1 = "UPDATE Student set StudentId=concat('ST',indexNo)";
+
+       // mysqli_query($sql1,$conn);
     }
     fclose($fp);
 }

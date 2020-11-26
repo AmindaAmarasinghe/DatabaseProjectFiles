@@ -1,2 +1,95 @@
-
-<button (click)="getData()">data</button>
+<!-- 
+<mat-tab-group  color="black" [backgroundColor]="tab_color"  mat-stretch-tabs [(selectedIndex)]="selectedIndex" (selectedTabChange)="tabChanged($event)" >
+    <mat-tab label="Login">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>name</th>
+                    <th>Contact</th>
+                    <th>Birth Day</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = " let mydata of data[0]">
+                    <td>{{mydata.id}}</td>
+                    <td>{{mydata.id}}</td>
+                    <td>{{mydata.name}}</td>
+                    <td>{{mydata.descipt}}</td>
+                </tr>
+            </tbody>
+        </table>
+    
+    </mat-tab>
+    <mat-tab label="Sign up">
+    <div class="sign-div">
+        
+    </div>
+    </mat-tab>
+    <div fxLayout="row" fxLayoutAlign="end center">
+        <button color="primary" mat-raised-button (click)="nextStep()" type="button">Next</button>                   
+    </div> 
+</mat-tab-group> -->
+<div class="admin">
+    <h2>Administration</h2>
+    <mat-tab-group mat-stretch-tabs  color="primary" [backgroundColor]="tab_color" >
+        <mat-tab label="COURSE DETAILS" > 
+            <table id="course">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>TEACHER ID</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = " let mydata of data[0]">
+                    <td>{{mydata.CourseId}}</td>
+                    <td>{{mydata.CourseName}}</td>
+                    <td>{{mydata.TeacherId}}</td>
+                    
+                </tr>
+            </tbody>
+        </table></mat-tab>
+        <mat-tab label="STUDENT DETAILS">
+            <table id="course">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Enrolled Courses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor = " let mydata of student[0]">
+                        <td>{{mydata.StudentId}}</td>
+                        <td>{{mydata.Firstname}}&nbsp;{{mydata.Lastname}}</td>
+                        <td>{{mydata.Contact}}</td>
+                        <td>{{mydata.Enrolledcourses}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </mat-tab>
+        <mat-tab label="TEACHER DETAILS">
+            <table id="course">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>Contact</th>
+                    <th>COURSES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = " let mydata3 of teacher[0]">
+                    <td>{{mydata3.TeacherId}}</td>
+                    <td>{{mydata3.TeacherName}}</td>
+                    <td>{{mydata3.Contact}}</td>
+                    <td>{{mydata3.courses}}</td>
+                </tr>
+            </tbody>
+        </table></mat-tab>
+      </mat-tab-group>
+</div>

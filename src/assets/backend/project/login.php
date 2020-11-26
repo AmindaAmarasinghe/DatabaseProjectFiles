@@ -10,7 +10,7 @@ header("Content-Type: application/json; charset=UTF-8");
 $servername = "localhost:3307";
 $username = "root";
 $password = "";
-$dbname = "angdb";
+$dbname = "project";
 $success = '"success"';
 $returnnResult ;
 
@@ -21,27 +21,30 @@ if ($conn->connect_error) {
 }
 if(isset($_POST['myusername'])){
     $u_name = $_POST['myusername'];
-    $pwd = $_POST['myemail'];
+    $pwd = $_POST['mypwd'];
 
     $fp = fopen('loginResult.json', 'w');
     //$data = array("data" => "Your Data added successfully");
     //    echo json_encode($data);
      //   fwrite($fp, json_encode($data));
-    $sql = "SELECT * FROM user WHERE username ='".$u_name."' AND email='".$pwd."' limit 1";
+    $sql = "SELECT * FROM student WHERE StudentId ='".$u_name."' AND Spassword='".$pwd."' limit 1";
     $result = mysqli_query($conn,$sql);
 
     if(mysqli_num_rows($result)==1){
        // header("location:registration.php");
-        $data = array("data" => "logged successully");
-        echo json_encode($data);
+         $data = array("data" => "logged successully");
+         while ($row = $result->fetch_assoc()) {
+            $myArr[]= $row;
+        }
+        //echo json_encode($data);
         fwrite($fp, json_encode($data));
-        
+        echo json_encode($myArr);
         
     
     }else{
        
         $data = array("data" => "incorrect");
-        fwrite($fp, json_encode($data));
+       fwrite($fp, json_encode($data));
     }
     fclose($fp);
 }

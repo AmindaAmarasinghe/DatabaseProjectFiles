@@ -2,19 +2,25 @@
 
 <div class="nav1">
     <div class="head">
-        <button id="course-btn" mat-button (click)="course()">Courses</button>
+        <!-- <button id="course-btn" mat-button (click)="course()">Courses</button> -->
         <button mat-button  (click)="nocourse();about();">About us</button>
-        <span>CO100 - Computer Programming</span><a  mat-button (click)="more();" style="float: right; color: rgb(236, 195, 181);">View more</a>
+        <!-- <span>CO100 - Computer Programming</span><a  mat-button (click)="more();" style="float: right; color: rgb(236, 195, 181);">View more</a> -->
     </div>
     <div class="content">
-        <div class="course-list close" id="course-list-id">
-            <button mat-button class="list" id="l1" (click)="noabout()">Courses1</button><br>
-            <button mat-button class="list" (click)="noabout()">Courses2</button><br>
-            <button mat-button class="list" (click)="noabout()">Courses3</button><br>
-            <button mat-button class="list" (click)="noabout()">Courses4</button><br>
-            <button mat-button class="list" (click)="noabout()">Courses5</button>
+        <!-- <div class="course-list " id="course-list-id" *ngFor = "let mydata of data">
+            <button mat-button class="list close" (click)="noabout()">{{mydata.CourseName}}</button><br>
+            
         </div>
-        
-        <div class="about" id="about">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis atque consequatur provident, nobis laborum autem? Laborum officia, sed laudantium nulla inventore iste. Nihil vitae iste repudiandae dolorum maxime quos laborum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem quos adipisci dolorum unde eaque nam iure ex expedita tempora cupiditate earum harum, quae dolores assumenda. Animi consectetur odit voluptate eum.</div>
+         -->
+        <div class="about" id="about"><h3>Our Mission</h3>Enhance the quality of learning and teaching. Meet the learning style or needs of students. Improve the efficiency and effectiveness. Improve user-accessibility and time flexibility to engage learners in the learning process<br>
+            eLearning is a learning process with the combination of content that is both delivered digitally and through face-to-face learning. eLearning contributes to the shifts from traditional face-to-face learning to the use of web technological tools which enhances collaborative learning and presents an entirely new learning platform for students. eLearning has also been the principal form of distance education but now, it is also changing the instructions on higher education as it is now becoming a global agent in higher education. Advancements in technology learning have contributed to the enhancements of generations of face-to-face learning and generations of distance education.<br>
+            <div class="course-list " id="course-list-id" *ngFor = "let mydata of data[0]">
+                <button mat-button class="list" >{{mydata.CourseName}}</button><br>
+                <!-- <button mat-button class="list" (click)="noabout()">Courses2</button><br>
+                <button mat-button class="list" (click)="noabout()">Courses3</button><br>
+                <button mat-button class="list" (click)="noabout()">Courses4</button><br>
+                <button mat-button class="list" (click)="noabout()">Courses5</button>  -->
+            </div> 
+        </div>
     </div>
 </div>

@@ -26,17 +26,18 @@
     .content{
         padding-bottom: 3%;
         display: flex;
-        background-image: url(../../../assets/img/2.jpg);
+        background-image: url(../../../assets/img/23.jpg);
         padding-top: 5%;
         background-size: fill;
         
         .course-list{
-            
+            display: inline-flex;
+            margin: 3px;
             float: left;
             button{
                 width: 200px;
                 background: rgb(182, 52, 123);
-                color: ivory;
+                color: rgb(21, 197, 188);
                 font-size: 20px;
             }
             button:hover{
@@ -49,7 +50,7 @@
         .about{
             float: right;
             margin-left: 5%;
-            color: cornsilk;
+            color: rgb(226, 194, 64);
             margin-right: 5%;
         }
         
