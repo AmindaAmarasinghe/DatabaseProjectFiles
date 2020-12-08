@@ -1,0 +1,29 @@
+.signfrm{
+    position: relative;
+    margin-top: 12%;
+    margin-left: 20%;
+    padding: 3%;
+    padding-left: 10%;
+    background-image: url('../../../assets/img/25.jpg');
+    
+    background-size: cover;
+    width: 50%;
+    color: wheat;
+    border: rgb(194, 144, 8) 10px solid;
+    h1{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+}
+ul {
+    list-style-type: none;
+    margin-top: 4px;
+  }
+::ng-deep .mat-input-container label{
+    color: rgb(223, 201, 201)!important;
+}
+::ng-deep .mat-focused .mat-input-container{
+     color: rgb(223, 201, 201)!important;
+}
+.placeholder{
+    color: floralwhite;
+}

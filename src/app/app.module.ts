@@ -35,6 +35,12 @@ import { TeacherComponent } from './pages/teacher/teacher.component';
 import { StudentComponent } from './pages/student/student.component';
 import { ScrollUpComponent } from './components/scroll-up/scroll-up.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { TeacherLoginComponent } from './components/teacher-login/teacher-login.component';
+import { TeacherJoinComponent } from './components/teacher-join/teacher-join.component';
+import { CO100Component } from './pages/courses/co100/co100.component';
+import { CO101Component } from './pages/courses/co101/co101.component';
+import { MainCourseComponent } from './pages/main-course/main-course.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +56,13 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     TeacherComponent,
     StudentComponent,
     ScrollUpComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    TeacherLoginComponent,
+    TeacherJoinComponent,
+    CO100Component,
+    CO101Component,
+    MainCourseComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -78,7 +78,7 @@ export class SignComponent implements OnInit {
     )
     
     var myFormdata = new FormData();
-    console.log(this.myDate);
+    //console.log(this.myDate);
     this.sharedService.sendEvent();
     myFormdata.append('firstname',this.SignForm.value.name1);
     myFormdata.append('lastname',this.SignForm.value.name2);
@@ -89,7 +89,7 @@ export class SignComponent implements OnInit {
     myFormdata.append('pwd',this.SignForm.value.password);
     myFormdata.append('gender',this.SignForm.value.gender);
     //myFormdata.append('regdate',this.myDate);
-    this.router.navigate(['/cources']);
+    this.router.navigate(['/cources',this.SignForm.value.contact]);
     return this.http.post('http://localhost:81/CO226/project/registration.php/',  myFormdata).subscribe((res: Response)=>{
       
     })

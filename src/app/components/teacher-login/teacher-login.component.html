@@ -1,0 +1,39 @@
+
+<div class="loginfrmTeach">
+    
+    <h2>LOGIN</h2>
+    <form [formGroup]="LoginTeachForm">
+        <div id="namefield">
+            <h3>username</h3>
+            <mat-form-field appearance="outline" >
+                <input id="username"
+                    matInput
+                    formControlName="username"
+                    
+                    placeholder="Enter your name" #message required >
+            </mat-form-field>
+            <div *ngIf="formAltaControls.username.invalid && (formAltaControls.username.dirty)" class="alert alert-danger form-danger" role="alert">please fill this field</div>
+            <!-- <div *ngIf="formAltaControls.username.errors.required">
+                El Nom del professional es obligatori
+            </div> -->
+        </div>
+        
+        <div id="passwordfield">
+            <h3>password</h3>
+            <mat-form-field appearance="outline"> 
+                <input id="password"
+                    [type]="hide ? 'password' : 'text'"
+                    matInput
+                    formControlName="password"
+                    
+                    placeholder="password" required >
+                    
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+            </mat-form-field>
+            <div *ngIf="formAltaControls.password.invalid && (formAltaControls.password.dirty)" class="alert alert-danger form-danger" role="alert">please fill this field</div>
+        </div>
+        <button mat-raised-button id="login-btn" (click)="onSubmitTeach();" style="background: chartreuse;">Login</button>
+    </form>
+</div>

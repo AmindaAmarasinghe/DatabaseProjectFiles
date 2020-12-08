@@ -8,24 +8,21 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { SharedServiceService} from 'src/app/services/shared-service.service';
 
-//import * as jsondata from '../../../../../../../../xampp/htdocs/CO226/project/loginResult.json';
-
-
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-teacher-login',
+  templateUrl: './teacher-login.component.html',
+  styleUrls: ['./teacher-login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class TeacherLoginComponent implements OnInit {
+
   user:Logger = new Logger();
-  LoginForm : FormGroup;
+  LoginTeachForm : FormGroup;
   logged : boolean = false;
   result =[];
   hide = true;
   data;
   submitted= false;
-  i:number=0;
-  constructor(private http:HttpClient,private sharedService: SharedServiceService, private router:Router, private formBuilder:FormBuilder, private _snackBar: MatSnackBar,public dialog: MatDialog) { 
+  constructor(private http:HttpClient,private sharedServiceteach: SharedServiceService,private sharedService: SharedServiceService, private router:Router, private formBuilder:FormBuilder, private _snackBar: MatSnackBar,public dialog: MatDialog) { 
     
     
    
@@ -42,70 +39,56 @@ export class LoginComponent implements OnInit {
             .subscribe(result => this.data = result);
             console.dir(this.data);
   }
-  onSubmit(){
+  onSubmitTeach(){
     //this.firebaseService.createUser(value, this.avatarLink)
     
     //alert("hi")
     
     //this.resetFields();
-    if(this.LoginForm.value.username == null || this.LoginForm.value.password == null){
+    if(this.LoginTeachForm.value.username == null || this.LoginTeachForm.value.password == null){
     Swal.fire({
       title: 'Incomplete',
       text: 'please fill all fields required',
       icon: 'warning'
     })
   }else{
+    this.dialog.closeAll();
+    this.openSnackBar('Login as '+this.LoginTeachForm.value.username, 'OK')
+    //this.logged = true;
+    
+    this.submitted = true;
+    this.sharedService.sendEvent();
+    console.log(this.LoginTeachForm.value);
     
     var myFormdata = new FormData();
-    myFormdata.append('myusername',this.LoginForm.value.username);
-    myFormdata.append('mypwd',this.LoginForm.value.password);
-    
+    myFormdata.append('myusername',this.LoginTeachForm.value.username);
+    myFormdata.append('mypwd',this.LoginTeachForm.value.password);
+    this.router.navigate(['student',this.LoginTeachForm.value.username]);
     this.http.post('http://localhost:81/CO226/project/login.php/', myFormdata).subscribe((res: Response)=>{
-      this.result.push(res);
-      console.dir(res);
-      console.log(this.result[this.i]);
-      if(this.result[this.i]=="success"){
-        this.router.navigate(['student',this.LoginForm.value.username]);
-        this.dialog.closeAll();
-        this.openSnackBar('Login as '+this.LoginForm.value.username, 'OK')
-        //this.logged = true;
-        
-        this.submitted = true;
-        this.sharedService.sendEvent();
-        //console.log(this.LoginForm.value);
-    
-      }else{
-        ++this.i;
-        this.openSnackBar('your username or password is incorrect!!!', 'OK')
-        Swal.fire({
-          title: 'Invalid Login',
-          text: 'your username or password is incorrect!!!',
-          icon: 'warning'
-        })
-      }
+     
     })
-    // this.http.get('http://localhost:81/CO226/project/login.php').subscribe(data=>{
-    //   this.result.push(data);
-    //   console.log(data);
+    this.http.get('http://localhost:81/CO226/project/login.php').subscribe(data=>{
+      this.result.push(data);
       
-    // }, error=>console.error(error));
-    //console.log(this.result.length);
-    
+      
+    }, error=>console.error(error));
+    console.log(this.result);
     
   }
   }
   get formAltaControls(): any {
-    return this.LoginForm['controls'];
+    return this.LoginTeachForm['controls'];
   } 
   follow(){
     var myFormdata1 = new FormData();
-    myFormdata1.append('myusername',this.LoginForm.value.username);
+    myFormdata1.append('myusername',this.LoginTeachForm.value.username);
     return this.http.post('http://localhost:81/CO226/project/mycources.php/', myFormdata1).subscribe((res: Response)=>{
      console.log(res);
     })
   }
   ngOnInit(): void {
-    this.LoginForm = this.formBuilder.group({
+    this.sharedServiceteach.sendEvent();
+    this.LoginTeachForm = this.formBuilder.group({
       'username':[this.user.username,[
           Validators.required
       ]],
@@ -124,6 +107,5 @@ export class LoginComponent implements OnInit {
       console.log(this.logged);
     }*/
   }
-  //get email() { return this.LoginForm.get('username'); }
-  //get password() { return this.LoginForm.get('password'); }
+
 }

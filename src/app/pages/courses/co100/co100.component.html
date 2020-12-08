@@ -1,0 +1,38 @@
+<div class="mycourse">
+    <h2>{{courseid}}:&nbsp; &nbsp;&nbsp;{{courseName}}</h2>
+    <div class="title-content" *ngFor="let Title of titleArray" ngFor="let content of contentArray">
+        <h4>{{Title}}</h4>
+        <p>{{content}}</p>
+    </div>
+    
+</div>
+<div class="teachpanel">
+    <form [formGroup]="teachFormCO100">
+        <div id="titlefield">
+            <h3>Title</h3>
+            <mat-form-field appearance="outline" color="white" >
+                <input id="title"
+                    matInput
+                    formControlName="title"
+                    placeholder="title here"
+                    #message required >
+            </mat-form-field>
+            
+         
+        </div>
+        <div id="bodyfield">
+            <h3>Course Content</h3>
+            <mat-form-field appearance="outline" color="white" style="height: 40%; width: 90%;">
+                <textarea matInput
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="50">
+                </textarea>
+            </mat-form-field>
+            
+         
+        </div>
+        <button mat-button style="background: lightseagreen;">Post to course page</button>
+    </form> 
+</div>

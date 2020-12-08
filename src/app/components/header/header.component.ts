@@ -13,12 +13,17 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   notlogged: boolean =true;
+  teach: boolean = false;
   EventSubscription1:Subscription;
+  EventSubscription2:Subscription;
   result: string = '';
 
-  constructor(public dialog: MatDialog, private sharedService: SharedServiceService, private router : Router) { 
+  constructor(public dialog: MatDialog, private sharedService: SharedServiceService,private sharedServiceteach: SharedServiceService, private router : Router) { 
     this.EventSubscription1=this.sharedService.getEvent().subscribe(()=>{
       this.notlogged = false;
+    })
+    this.EventSubscription2=this.sharedServiceteach.getEvent().subscribe(()=>{
+      this.teach = false;
     })
   }
   openDialog():void {

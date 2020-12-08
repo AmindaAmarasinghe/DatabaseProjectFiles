@@ -2,6 +2,6 @@
     <mat-card *ngFor="let data of mydata[0]" class="card">
         <h1>{{data.CourseName}}</h1>
         <h3>{{data.introduction}}</h3>
-        <button mat-button>Follow</button>
+        <button mat-button (click)="Follow(data.CourseId);" >Follow</button>
     </mat-card>
 </div>
