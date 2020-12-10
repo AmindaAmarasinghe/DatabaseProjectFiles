@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     });
   }
   public getData(){
-    this.http.get('http://localhost:81/CO226/project/loginResult.json/data')
+    this.http.get('http://localhost:81/CO226/group13/loginResult.json/data')
             .subscribe(result => this.data = result);
             console.dir(this.data);
   }
@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
     myFormdata.append('myusername',this.LoginForm.value.username);
     myFormdata.append('mypwd',this.LoginForm.value.password);
     
-    this.http.post('http://localhost:81/CO226/project/login.php/', myFormdata).subscribe((res: Response)=>{
+    this.http.post('http://localhost:81/CO226/group13/login.php/', myFormdata).subscribe((res: Response)=>{
       this.result.push(res);
       console.dir(res);
       console.log(this.result[this.i]);
@@ -100,7 +100,7 @@ export class LoginComponent implements OnInit {
   follow(){
     var myFormdata1 = new FormData();
     myFormdata1.append('myusername',this.LoginForm.value.username);
-    return this.http.post('http://localhost:81/CO226/project/mycources.php/', myFormdata1).subscribe((res: Response)=>{
+    return this.http.post('http://localhost:81/CO226/group13/mycources.php/', myFormdata1).subscribe((res: Response)=>{
      console.log(res);
     })
   }

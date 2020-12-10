@@ -36,7 +36,7 @@ export class TeacherJoinComponent implements OnInit {
    moment : Moment;
    
    myDate: string
-   constructor(private formBuilder1:FormBuilder, private http: HttpClient, private router: Router, private sharedService : SharedServiceService,private sharedServiceteach : SharedServiceService) { 
+   constructor(private formBuilder1:FormBuilder, private http: HttpClient, private router: Router, private sharedService : SharedServiceService,private sharedService4 : SharedServiceService,private sharedServiceNo : SharedServiceService) { 
      
    }
    
@@ -46,7 +46,7 @@ export class TeacherJoinComponent implements OnInit {
      this.myDate = moment(new Date()).format("YYYY-MM-DD");
      this.SignFormTeach.get('dp3').setValue(newdateValue);
      console.log(this.SignFormTeach.value);
-     if(this.SignFormTeach.value.name1 == null || this.SignFormTeach.value.gender == null || this.SignFormTeach.value.name2 == null || this.SignFormTeach.value.contact ==null || this.SignFormTeach.value.address1 == null || this.SignFormTeach.value.address2 == null || this.SignFormTeach.value.dp3== null|| this.SignFormTeach.value.password ==null|| this.SignFormTeach.value.repassword == null){
+     if(this.SignFormTeach.value.name1 == null || this.SignFormTeach.value.gender == null || this.SignFormTeach.value.name2 == null || this.SignFormTeach.value.contact ==null || this.SignFormTeach.value.address1 == null || this.SignFormTeach.value.address2 == null || this.SignFormTeach.value.dp3== null|| this.SignFormTeach.value.password ==null|| this.SignFormTeach.value.repassword == null || this.SignFormTeach.value.descript == null){
        Swal.fire({
          title: 'Incomplete',
          text: 'please fill all fields required',
@@ -87,9 +87,10 @@ export class TeacherJoinComponent implements OnInit {
      myFormdata.append('birthdate',this.SignFormTeach.value.dp3);
      myFormdata.append('pwd',this.SignFormTeach.value.password);
      myFormdata.append('gender',this.SignFormTeach.value.gender);
-     //myFormdata.append('regdate',this.myDate);
-     this.router.navigate(['/cources']);
-     return this.http.post('http://localhost:81/CO226/project/registration.php/',  myFormdata).subscribe((res: Response)=>{
+     myFormdata.append('regdate',this.myDate);
+     myFormdata.append('descript',this.SignFormTeach.value.descript);
+     this.router.navigate(['/teacherWelcome']);
+     return this.http.post('http://localhost:81/CO226/group13/teacherReg.php/',  myFormdata).subscribe((res: Response)=>{
        
      })
      
@@ -103,7 +104,8 @@ export class TeacherJoinComponent implements OnInit {
  }
  
    ngOnInit(): void {
-    this.sharedServiceteach.sendEvent();
+    //this.sharedServiceteach.sendEvent();
+    this.sharedServiceNo.sendEvent();
      this.SignFormTeach = this.formBuilder1.group({
        'name1':[this.student.name1,[
            Validators.required
@@ -131,7 +133,10 @@ export class TeacherJoinComponent implements OnInit {
      ]],
      'repassword':[this.student.pwd,[
        Validators.required
-     ]]
+     ]],
+     'descript':[this.student.descript,[
+      Validators.required
+    ]]
      })
      
    }

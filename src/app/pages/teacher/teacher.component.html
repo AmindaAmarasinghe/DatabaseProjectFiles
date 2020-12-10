@@ -1,4 +1,14 @@
-<div class="fileUpload">
-<input type="file" (change)="onFileSelected($event)">
-<button mat-stroked-button style="background: cyan;" (click)="OnUpload()">Post to course page</button>
+
+<div class="mycourses" >
+    
+    <button mat-raised-button disabled style="background: rgb(8, 5, 182); color: pink;"><h2>My Courses</h2></button>
+    <div class="mylist" *ngFor="let mysubject of subject[0]">
+        
+        <button mat-raised-button style="background: dodgerblue; width: 30%;" (click)="goCourse(mysubject)">{{mysubject}}</button>
+    </div>
+    
+</div>
+<div class="announcement">
+    <h2>Announcements</h2>
+    <p>your Announcements appear here</p>
 </div>

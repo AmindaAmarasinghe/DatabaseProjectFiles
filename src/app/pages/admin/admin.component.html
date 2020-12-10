@@ -1,36 +1,40 @@
-<!-- 
-<mat-tab-group  color="black" [backgroundColor]="tab_color"  mat-stretch-tabs [(selectedIndex)]="selectedIndex" (selectedTabChange)="tabChanged($event)" >
-    <mat-tab label="Login">
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>name</th>
-                    <th>Contact</th>
-                    <th>Birth Day</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor = " let mydata of data[0]">
-                    <td>{{mydata.id}}</td>
-                    <td>{{mydata.id}}</td>
-                    <td>{{mydata.name}}</td>
-                    <td>{{mydata.descipt}}</td>
-                </tr>
-            </tbody>
-        </table>
-    
-    </mat-tab>
-    <mat-tab label="Sign up">
-    <div class="sign-div">
+<div class="gaurd" *ngIf = "guard">
+    <form [formGroup]="guardForm">
+        <div id="namefield">
+            <h3>username</h3>
+            <mat-form-field appearance="outline" >
+                <input id="username"
+                    matInput
+                    formControlName="username"
+                    
+                    placeholder="Enter your name" #message required >
+            </mat-form-field>
+            <div *ngIf="formAltaControls.username.invalid && (formAltaControls.username.dirty)" class="alert alert-danger form-danger" role="alert">please fill this field</div>
+            <!-- <div *ngIf="formAltaControls.username.errors.required">
+                El Nom del professional es obligatori
+            </div> -->
+        </div>
         
-    </div>
-    </mat-tab>
-    <div fxLayout="row" fxLayoutAlign="end center">
-        <button color="primary" mat-raised-button (click)="nextStep()" type="button">Next</button>                   
-    </div> 
-</mat-tab-group> -->
-<div class="admin">
+        <div id="passwordfield">
+            <h3>password</h3>
+            <mat-form-field appearance="outline"> 
+                <input id="password"
+                    [type]="hide ? 'password' : 'text'"
+                    matInput
+                    formControlName="password"
+                    
+                    placeholder="password" required >
+                    
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+            </mat-form-field>
+            <div *ngIf="formAltaControls.password.invalid && (formAltaControls.password.dirty)" class="alert alert-danger form-danger" role="alert">please fill this field</div>
+        </div>
+        <button mat-raised-button id="login-btn" (click)="onSubmit();" style="background: chartreuse;">Login</button>
+    </form>
+</div>
+<div class="admin" *ngIf = "!guard">
     <h2>Administration</h2>
     <mat-tab-group mat-stretch-tabs  color="primary" [backgroundColor]="tab_color" >
         <mat-tab label="COURSE DETAILS" > 

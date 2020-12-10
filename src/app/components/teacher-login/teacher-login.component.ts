@@ -19,10 +19,11 @@ export class TeacherLoginComponent implements OnInit {
   LoginTeachForm : FormGroup;
   logged : boolean = false;
   result =[];
+  i:number=0;
   hide = true;
   data;
   submitted= false;
-  constructor(private http:HttpClient,private sharedServiceteach: SharedServiceService,private sharedService: SharedServiceService, private router:Router, private formBuilder:FormBuilder, private _snackBar: MatSnackBar,public dialog: MatDialog) { 
+  constructor(private http:HttpClient,private sharedServiceNo: SharedServiceService,private sharedService: SharedServiceService, private router:Router, private formBuilder:FormBuilder, private _snackBar: MatSnackBar,public dialog: MatDialog) { 
     
     
    
@@ -35,7 +36,7 @@ export class TeacherLoginComponent implements OnInit {
     });
   }
   public getData(){
-    this.http.get('http://localhost:81/CO226/project/loginResult.json/data')
+    this.http.get('http://localhost:81/CO226/group13/loginResult.json/data')
             .subscribe(result => this.data = result);
             console.dir(this.data);
   }
@@ -63,16 +64,29 @@ export class TeacherLoginComponent implements OnInit {
     var myFormdata = new FormData();
     myFormdata.append('myusername',this.LoginTeachForm.value.username);
     myFormdata.append('mypwd',this.LoginTeachForm.value.password);
-    this.router.navigate(['student',this.LoginTeachForm.value.username]);
-    this.http.post('http://localhost:81/CO226/project/login.php/', myFormdata).subscribe((res: Response)=>{
-     
+    this.router.navigate(['teacher',this.LoginTeachForm.value.username]);
+    this.http.post('http://localhost:81/CO226/group13/loginTeach.php/', myFormdata).subscribe((res: Response)=>{
+      this.result.push(res);
+      console.dir(res);
+      console.log(this.result[this.i]);
+      if(this.result[this.i]=="success"){
+        
+        
+        this.openSnackBar('Login as '+this.LoginTeachForm.value.username, 'OK')
+        this.router.navigate(['teacher',this.LoginTeachForm.value.username]);
+        
+    
+      }else{
+        ++this.i;
+        this.openSnackBar('your username or password is incorrect!!!', 'OK')
+        Swal.fire({
+          title: 'Invalid Login',
+          text: 'your username or password is incorrect!!!',
+          icon: 'warning'
+        })
+      }
     })
-    this.http.get('http://localhost:81/CO226/project/login.php').subscribe(data=>{
-      this.result.push(data);
-      
-      
-    }, error=>console.error(error));
-    console.log(this.result);
+    
     
   }
   }
@@ -82,12 +96,12 @@ export class TeacherLoginComponent implements OnInit {
   follow(){
     var myFormdata1 = new FormData();
     myFormdata1.append('myusername',this.LoginTeachForm.value.username);
-    return this.http.post('http://localhost:81/CO226/project/mycources.php/', myFormdata1).subscribe((res: Response)=>{
+    return this.http.post('http://localhost:81/CO226/group13/mycources.php/', myFormdata1).subscribe((res: Response)=>{
      console.log(res);
     })
   }
   ngOnInit(): void {
-    this.sharedServiceteach.sendEvent();
+    this.sharedServiceNo.sendEvent();
     this.LoginTeachForm = this.formBuilder.group({
       'username':[this.user.username,[
           Validators.required

@@ -39,8 +39,9 @@ import { TeacherLoginComponent } from './components/teacher-login/teacher-login.
 import { TeacherJoinComponent } from './components/teacher-join/teacher-join.component';
 import { CO100Component } from './pages/courses/co100/co100.component';
 import { CO101Component } from './pages/courses/co101/co101.component';
-import { MainCourseComponent } from './pages/main-course/main-course.component';
+
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { TeacherWelcomeComponent } from './pages/teacher-welcome/teacher-welcome.component';
 
 @NgModule({
   declarations: [
@@ -61,8 +62,9 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     TeacherJoinComponent,
     CO100Component,
     CO101Component,
-    MainCourseComponent,
-    NotFoundComponent
+ 
+    NotFoundComponent,
+    TeacherWelcomeComponent
   ],
   imports: [
     BrowserModule,

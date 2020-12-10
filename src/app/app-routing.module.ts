@@ -9,9 +9,10 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { CourcesComponent } from './pages/cources/cources.component';
 import { CO100Component } from './pages/courses/co100/co100.component';
 import { HomeComponent } from './pages/home/home.component';
-import { MainCourseComponent } from './pages/main-course/main-course.component';
+
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { StudentComponent } from './pages/student/student.component';
+import { TeacherWelcomeComponent } from './pages/teacher-welcome/teacher-welcome.component';
 import { TeacherComponent } from './pages/teacher/teacher.component';
 
 const routes: Routes = [
@@ -46,9 +47,14 @@ const routes: Routes = [
    {
     path:'teacher-log',
     component: TeacherLoginComponent
-   },{
+   },
+   {
     path:'teacher-join',
     component: TeacherJoinComponent
+   },
+   {
+    path:'teacherWelcome',
+    component: TeacherWelcomeComponent
    },
    {
     path:'student',
@@ -66,16 +72,21 @@ const routes: Routes = [
     path:'teacher',
     component: TeacherComponent
    },
-   {
-    path:'mycourse',
-    component: MainCourseComponent
-   },
+   
    {
     path:'CO100',
     component:  CO100Component
    },
    {
+    path:'CO100/:id',
+    component:  CO100Component
+   },
+   {
     path:'teacher/:id',
+    component: TeacherComponent
+   },
+   {
+    path:'teacher',
     component: TeacherComponent
    },
    {

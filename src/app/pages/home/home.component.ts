@@ -12,7 +12,7 @@ import { LoginComponent } from 'src/app/components/login/login.component';
 export class HomeComponent implements OnInit {
   data=[];
   constructor(public dialog1: MatDialog, private http: HttpClient) { 
-    this.http.get('http://localhost:81/CO226/project/coursesintro.php').subscribe(data=>{
+    this.http.get('http://localhost:81/CO226/group13/coursesintro.php').subscribe(data=>{
       this.data.push(data);
       
       

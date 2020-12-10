@@ -20,10 +20,11 @@
     <a mat-button (click)="openDialog();"  class="login">LOGIN</a><span></span>
     <a mat-button  href="/sign#head1" class="login" routerLinkActive="active">SIGN UP</a>
 </div>
-<div class="btn" *ngIf="!notlogged && !teach">
+<div class="btn" *ngIf="!notlogged">
     
     <a mat-button class="login" routerLinkActive="active" (click)="confirmDialog()">LOGOUT</a>
 </div>
+
 
 
 <!-- </ul> -->

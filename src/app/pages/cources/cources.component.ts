@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SharedServiceService } from 'src/app/services/shared-service.service';
 
 @Component({
   selector: 'app-cources',
@@ -11,9 +12,9 @@ export class CourcesComponent implements OnInit {
   mydata =[];
   public parameterValue: string;
   clicked = false;
-  constructor(private http: HttpClient, private _activatedRoute: ActivatedRoute    ) { 
+  constructor(private http: HttpClient, private _activatedRoute: ActivatedRoute ,public sharedService: SharedServiceService   ) { 
     
-    this.http.get('http://localhost:81/CO226/project/coursesintro.php').subscribe(data=>{
+    this.http.get('http://localhost:81/CO226/group13/coursesintro.php').subscribe(data=>{
       this.mydata.push(data);
       
       
@@ -28,7 +29,7 @@ export class CourcesComponent implements OnInit {
     console.log(this.parameterValue);
     console.log(id);
     
-    return this.http.post('http://localhost:81/CO226/project/follow.php/',  myFormdata).subscribe((res: Response)=>{
+    return this.http.post('http://localhost:81/CO226/group13/follow.php/',  myFormdata).subscribe((res: Response)=>{
       
     })
   }
@@ -36,6 +37,7 @@ export class CourcesComponent implements OnInit {
   ngOnInit(): void {
     // this._activatedRoute.params.subscribe(parameter => {
     //  this.parameterValue = parameter.parameter
+    this.sharedService.sendEvent();
     this.parameterValue = this._activatedRoute.snapshot.paramMap.get('email');
     console.log(this.parameterValue);
     this.clicked = false;

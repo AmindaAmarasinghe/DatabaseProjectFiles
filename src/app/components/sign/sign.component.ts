@@ -37,7 +37,7 @@ export class SignComponent implements OnInit {
   moment : Moment;
   
   myDate: string
-  constructor(private formBuilder1:FormBuilder, private http: HttpClient, private router: Router, private sharedService : SharedServiceService) { 
+  constructor(private formBuilder1:FormBuilder, private http: HttpClient, private router: Router, public sharedService : SharedServiceService) { 
     
   }
   
@@ -78,7 +78,7 @@ export class SignComponent implements OnInit {
     )
     
     var myFormdata = new FormData();
-    //console.log(this.myDate);
+    console.log(this.myDate);
     this.sharedService.sendEvent();
     myFormdata.append('firstname',this.SignForm.value.name1);
     myFormdata.append('lastname',this.SignForm.value.name2);
@@ -88,9 +88,9 @@ export class SignComponent implements OnInit {
     myFormdata.append('birthdate',this.SignForm.value.dp3);
     myFormdata.append('pwd',this.SignForm.value.password);
     myFormdata.append('gender',this.SignForm.value.gender);
-    //myFormdata.append('regdate',this.myDate);
+    myFormdata.append('regdate',this.myDate);
     this.router.navigate(['/cources',this.SignForm.value.contact]);
-    return this.http.post('http://localhost:81/CO226/project/registration.php/',  myFormdata).subscribe((res: Response)=>{
+    return this.http.post('http://localhost:81/CO226/group13/registration.php/',  myFormdata).subscribe((res: Response)=>{
       
     })
     

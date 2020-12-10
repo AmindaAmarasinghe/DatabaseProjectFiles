@@ -1,9 +1,9 @@
 <div class="mycourses">
-    <button mat-raised-button style="background: royalblue;" (click)="go()">All courses</button>
+    <button mat-raised-button style="background: rgb(8, 5, 182); color: pink;" (click)="go()"><h2>All courses</h2></button><br>
     <button mat-raised-button disabled style="background: rgb(8, 5, 182); color: pink;"><h2>My Courses</h2></button>
-    <div class="mylist" *ngFor="let mysubject of mysubjects[0]">
+    <div class="mylist" *ngFor="let mysubject of subject[0]">
         
-        <button mat-raised-button style="background: dodgerblue; width: 30%;">{{mysubject.StudentId}}:&nbsp;&nbsp;&nbsp;{{mysubject.name}}</button>
+        <button mat-raised-button style="background: dodgerblue; width: 30%;" (click)="goCourse(mysubject)">{{mysubject}}</button>
     </div>
     
 </div>

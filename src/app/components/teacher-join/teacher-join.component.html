@@ -83,6 +83,21 @@
           <br>
          
           <mat-divider style="width: 40%;"></mat-divider><br>
+        <div id="bodyfield">
+            <h3>Describe your qualifications & course you wish to conduct</h3>
+            <mat-form-field appearance="legacy" color="white" style="height: 40%; width: 90%;">
+                <textarea matInput
+                    id="descript"
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="1"
+                    formControlName="descript"
+                    cdkAutosizeMaxRows="10">
+                </textarea>
+            </mat-form-field>
+            
+         
+        </div>
         <div id="passwordfield">
             <h3>Create Password</h3>
             <mat-form-field appearance="legacy"> 

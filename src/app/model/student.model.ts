@@ -9,6 +9,7 @@ export class Student {
     public pwd: string;
     public repwd: string;
     public  gender: string;
+    public descript: string;
     
     // constructor(Id:number,name: string,pwd:string,email:string) {
     // this.Id = Id;
