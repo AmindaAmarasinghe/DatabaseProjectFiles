@@ -75,8 +75,6 @@ export class AdminComponent implements OnInit {
     })
   }else{
     
-    this.openSnackBar('Login as '+this.guardForm.value.username, 'OK')
-    //this.logged = true;
     
     this.submitted = true;
     //this.sharedService.sendEvent();

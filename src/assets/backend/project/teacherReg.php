@@ -19,15 +19,15 @@ if(isset($_POST['firstname'])){
 
     
     
-    $sql = "INSERT INTO Teacher (TeacherId, Contact, Tpassword, Sex, BirthDate ,Registerdate, descriptionV) values ('undefined','".$_POST['myemail']."','".$_POST['pwd']."','".$_POST['gender']."','".$_POST['birthdate']."','".$_POST['regdate']."','".$_POST['descript']."')";
+    $sql = "INSERT INTO Teacher (TeacherId, Contact, Tpassword, Sex, BirthDate ,Registerdate, descriptionV) values ('".$_POST['myemail']."','".$_POST['myemail']."','".$_POST['pwd']."','".$_POST['gender']."','".$_POST['birthdate']."','".$_POST['regdate']."','".$_POST['descript']."')";
     $data_array = array(); 
     
     if (mysqli_query($conn,$sql)) {
         $data = array("data" => "Your Data added successfully");
 
         
-        $sql2 = "UPDATE Teacher set TeacherName=concat('".$_POST['firstname']."',' ','".$_POST['lastname']."')";
-        $sql3 = "UPDATE Teacher set AddressV=concat('".$_POST['address1']."',',','".$_POST['address2']."')";
+        $sql2 = "UPDATE Teacher set TeacherName=concat('".$_POST['firstname']."',' ','".$_POST['lastname']."') where Contact ='".$_POST['myemail']."' ";
+        $sql3 = "UPDATE Teacher set AddressV=concat('".$_POST['address1']."',',','".$_POST['address2']."') where Contact ='".$_POST['myemail']."' ";
         
            
         if (mysqli_query($conn,$sql2)){

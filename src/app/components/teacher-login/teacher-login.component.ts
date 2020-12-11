@@ -53,8 +53,7 @@ export class TeacherLoginComponent implements OnInit {
       icon: 'warning'
     })
   }else{
-    this.dialog.closeAll();
-    this.openSnackBar('Login as '+this.LoginTeachForm.value.username, 'OK')
+    
     //this.logged = true;
     
     this.submitted = true;
@@ -64,7 +63,7 @@ export class TeacherLoginComponent implements OnInit {
     var myFormdata = new FormData();
     myFormdata.append('myusername',this.LoginTeachForm.value.username);
     myFormdata.append('mypwd',this.LoginTeachForm.value.password);
-    this.router.navigate(['teacher',this.LoginTeachForm.value.username]);
+    
     this.http.post('http://localhost:81/CO226/group13/loginTeach.php/', myFormdata).subscribe((res: Response)=>{
       this.result.push(res);
       console.dir(res);

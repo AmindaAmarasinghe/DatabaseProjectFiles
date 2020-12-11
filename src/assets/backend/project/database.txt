@@ -16,7 +16,7 @@ CREATE TABLE Student (
 
 CREATE TABLE Teacher (
 
-  TeacherId varchar(10) NOT NULL,
+  TeacherId varchar(50) NOT NULL,
   TeacherName varchar(60) NOT NULL,
   AddressV varchar(50) NOT NULL,
   Contact varchar(50) NOT NULL,

@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 } 
 if(isset($_POST['userId'])){
     
-    $sql = "SELECT * from Teacher where TeacherId ='".$_POST['userId']."'";
+    $sql = "SELECT courses from Teacher where TeacherId ='".$_POST['userId']."'";
     //$sql =" SELECT * FROM course where followers like '%'".$_POST['userId']."'%'  ";
     $test = array();
     $result = mysqli_query($conn, $sql);   
