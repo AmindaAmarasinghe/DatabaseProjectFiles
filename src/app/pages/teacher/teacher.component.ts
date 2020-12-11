@@ -19,7 +19,7 @@ export class TeacherComponent implements OnInit {
   list: string;
   constructor(private http: HttpClient, private _activatedRoute1: ActivatedRoute ,private sharedService: SharedServiceService, private router: Router) {
     var myFormdata = new FormData();
-    this.parameter = this._activatedRoute1.snapshot.paramMap.get('username');
+    this.parameter = this._activatedRoute1.snapshot.paramMap.get('id');
     console.log(this.parameter);
     myFormdata.append('userId',this.parameter);
     this.http.post('http://localhost:81/CO226/group13/teachercourses.php/',  myFormdata).subscribe((res: Response)=>{
@@ -45,7 +45,7 @@ export class TeacherComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.parameter = this._activatedRoute1.snapshot.paramMap.get('username');
+    this.parameter = this._activatedRoute1.snapshot.paramMap.get('id');
     console.log(this.parameter);
     this.sharedService.sendEvent();
   }
