@@ -13,7 +13,7 @@ export class StudentComponent implements OnInit {
   parameter: string;
   subject=[];
   list: string;
-  constructor(private http: HttpClient, private _activatedRoute1: ActivatedRoute , private router: Router,public sharedService: SharedServiceService) {
+  constructor(private http: HttpClient, private _activatedRoute1: ActivatedRoute , private router: Router,private sharedService: SharedServiceService) {
     var myFormdata = new FormData();
     this.parameter = this._activatedRoute1.snapshot.paramMap.get('username');
     console.log(this.parameter);
@@ -41,11 +41,7 @@ export class StudentComponent implements OnInit {
   
    this.sharedService.sendEvent();
   
-    // this.http.get('http://localhost:81/CO226/project/mycources.php/').subscribe(data=>{
-      
-    //   console.log(data);
-      
-    // }, error=>console.error(error));
+    
   }
 
 }

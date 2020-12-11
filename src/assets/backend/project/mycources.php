@@ -7,20 +7,30 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 $servername = "localhost:3307";
 $username = "root";
 $password = "";
-$dbname = "angdb";
+$dbname = "group13";
 
 $conn = new mysqli($servername,$username,$password,$dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-$sql =" SELECT * FROM course where followers like %'".$_POST['myusername']."'% ";
-
-$result = $conn->query($sql);
-$myArr = array();
-if($result->num_rows>0){
+if(isset($_POST['userId'])){
+    
+    $sql = "SELECT Enrolledcourses from student where StudentId ='".$_POST['userId']."'";
+    //$sql =" SELECT * FROM course where followers like '%'".$_POST['userId']."'%'  ";
+    $test = array();
+    $result = mysqli_query($conn, $sql);   
     while ($row = $result->fetch_assoc()) {
-        $myArr[]= $row;
+        
+        $test[]= $row;
     }
+    
+    
+  
+    echo json_encode($test);
+   
+    
 }
-echo json_encode($myArr);
+
+
+
 ?>

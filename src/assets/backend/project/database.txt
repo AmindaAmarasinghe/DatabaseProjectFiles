@@ -1,0 +1,124 @@
+CREATE TABLE Student (
+	indexNo int Auto_increment NOT NULL,
+	StudentId varchar(20) NOT NULL,
+	Firstname varchar(30) NOT NULL,
+	Lastname varchar(30) NOT NULL,
+	Addressline1 varchar(50) NOT NULL,
+	Addressline2 varchar(50) NOT NULL,
+	Contact varchar(50) NOT NULL,
+	Sex varchar(6) NOT NULL,
+	BirthDate datetime NOT NULL,
+	Registerdate datetime DEFAULT NULL,
+	Enrolledcourses varchar(255) DEFAULT NULL,
+	Spassword varchar(30) NOT NULL,
+	primary key(indexNo, StudentId)
+);
+
+CREATE TABLE Teacher (
+
+  TeacherId varchar(10) NOT NULL,
+  TeacherName varchar(60) NOT NULL,
+  AddressV varchar(50) NOT NULL,
+  Contact varchar(50) NOT NULL,
+  Sex varchar(6) NOT NULL,
+  BirthDate datetime NOT NULL,
+  Registerdate datetime NOT NULL,
+  courses varchar(50) DEFAULT NULL,
+  Tpassword varchar(30) NOT NULL,
+  descriptionV varchar(255),
+  primary key(TeacherId)
+);
+
+CREATE TABLE Admin (
+  
+  AdminId varchar(10) NOT NULL PRIMARY KEY,
+  AdminName varchar(50) NOT NULL,
+  Address varchar(50) NOT NULL,
+  Contact varchar(50) NOT NULL,
+  Sex varchar(6) NOT NULL,
+  BirthDate datetime DEFAULT NULL,
+  Adpassword varchar(30) NOT NULL
+);
+
+CREATE TABLE Course (
+  CourseId varchar(10) NOT NULL PRIMARY KEY,
+  CourseName varchar(30) NOT NULL,
+  TeacherId varchar(10) NOT NULL,
+  introduction varchar(255),
+  FOREIGN KEY (TeacherId) REFERENCES Teacher(TeacherId) on delete set default on update cascade
+);
+
+
+
+INSERT INTO Student  (StudentId, Firstname, Lastname, Addressline1, Addressline2,Contact, Sex, BirthDate, Registerdate,EnrolledCourses,  Spassword)  values
+("ST1","SANDUN","Edirisinghe","No. 34, main road, pamunuwa", "maharagama","sandun99@gmail.com","male","1999-07-25","2020-11-01",NULL,"SANDUN99@WEB"),
+("ST2","Sanka","suresh","No.134, main road, meegalewa", "puwakwatta","sankssl@gmail.com","male","1998-07-15","2020-11-01","CO100","sanka12sl"),
+("ST3","lasantha","Edirimanna","No. 5,Sri sugatha rd", "narammala","lasanara@gmail.com","male","1999-05-23","2020-11-01",NULL,"lasa33@tech"),
+("ST4","shanika","suraweera","laksiripaya, gangodawila", "Nugegoda","shanikaudani@outlook.com","female","1997-04-16","2020-11-02",NULL,"shani1234"),
+("ST5","Priya","marasinghe","No.67, main road, Rassahela", "nawalapitiya","priya22@gmail.com","female","1999-07-15","2020-11-02","CO100","123priya@co"),
+("ST6","Duleeka","Munaweera","No. 5, colombo rd, Pahalagama", "Kadawatha","dulee@gmail.com","female","1998-03-17","2020-11-02","MA100","dul67@67"),
+("ST7","kasun","gamlath","No.67, Wekanda", "polonnaruwa","kg98@gmail.com","male","1998-04-25","2020-11-02","MA101","kasun@kg98"),
+("ST8","Wijith","Siripala","lakwimana,New town", "Embilipitiya","wijesiri@gmail.com","male","1997-04-17","2020-11-02",NULL,"wije1234"),
+("ST9","saranga","weerasinghe","No.56,udakanda rd, millawitiya", "kuruwita","sarangadilshan@gmail.com","male","1996-05-15","2020-11-02","CO100","sara1234@dil"),
+("ST10","pramith","ekanayaka","No.9,Colombo rd,Kaluthara-south", "Kaluthara","pramith14@gmail.com","male","1999-11-15","2020-11-02",NULL,"pramith45"),
+("ST11","Lochana","udana","456, pahalawatta", "katugasthota","lochana98@gmail.com","male","1998-03-21","2020-11-02","MA100","udana898"),
+("ST12","Udayanga","Amarasinghe","No.375,Napawala, Getahetta", "Eheliyagoda","udayanga12@gmail.com","male","1998-09-20","2020-11-02","MA100","udaya1234"),
+("ST13","hasitha","somaweera","No.64, Deraniyagala rd, Erathna", "Kuruwita","hasi1234@gmail.com","male","1999-08-25","2020-11-02",NULL,"hasi99"),
+("ST14","Imesh","Lakshan","No.56, Colombo road", "Avissawella","imesh22@gmail.com","male","1999-02-15","2020-11-02","MA101","imeshlak99"),
+("ST15","Akalanka","Nuwan","No.678, main road", "Ratnapura","nuwan35@gmail.com","male","1998-04-22","2020-11-03",NULL,"akalankanuwan12"),
+("ST16","supun","Ediriweera","No.45, Main road", "Kekirawa","supun22@gmail.com","male","1999-07-18","2020-11-03",NULL,"supun1234"),
+("ST17","naduni","weerasinghe","No. 134, main road, Seethawaka", "Avissawella","nweerasinghe@gmail.com","female","1999-08-19","2020-11-03",NULL,"naduni234"),
+("ST18","Nandana","Ekanayaka","No.4, Jaffna road", "Anuradhappura","nanda12@gmail.com","male","1999-07-16","2020-11-03",NULL,"nandana012"),
+("ST19","Ranga","piyal","No.78, Highway rd", "maharagama","ranga2@gmail.com","male","1998-08-25","2020-11-03",NULL,"ranga98"),
+("ST20","kasun","lakshan","No.34,Kandy rd", "Gampaha","kasun9@gmail.com","male","1998-09-25","2020-11-03",NULL,"kasunz4");
+
+
+INSERT INTO Admin values
+("AD001","Aminda","No.3, Getahetta","aminda1@gmail.com","male","1998-09-29","admin2"),
+("AD002","Anuruddha","No.78,main road, Kahatagasdigiliya","anuruddha@gmail.com","male","1998-04-15","anu123");
+
+
+INSERT INTO Teacher values
+("T001","Kasun hewage","No.33,kotte,jayawardenapura","kasun888@gmail.com","male","1985-09-20","2020-11-01","CO100","kasun1234",NULL),
+("T002","Amal nanayakkara","No.3,uwa paranagama","ama1333@gmail.com","male","1978-09-29","2020-11-01","CO101","user2",NULL),
+("T003","Asitha de mel","No.8,main road, hapugalla","desilva3@gmail.com","male","1988-04-15","2020-11-01","CO102","teach5",NULL),
+("T004","kalhara silva","No.78,puwakpitiya, hanwella","kalhara32@gmail.com","male","1986-07-30","2020-11-01","CO103","kalh4",NULL),
+("T005","roshan ranasinghe","No.37, getambe,peradeniya","roshanw5@gmail.com","male","1976-05-20","2020-11-01","CO104","ro1234",NULL),
+("T006","hashan rakitha","No.87, hidellana, ratnapura","hashan5@gmail.com","male","1981-06-28","2020-11-01","CO105","hash34",NULL),
+("T007","udani Warnasinghe","No.6, main rd, udawalawa","udani3@gmail.com","female","1990-07-03","2020-11-01","MA201","warna1234",NULL),
+("T008","keerthi","No.39, Anuradhapura rd, inamaluwa","k3thilak@gmail.com","male","1981-09-23","2020-11-01","CO200","keerthi1234",NULL),
+("T009","Randunu namal","No.98, colombo rd, Peradeniya","ran7namal@gmail.com","male","1989-09-18","2020-11-01","CO201","randunu1234",NULL),
+("T010","pethum hewage","No.8, galle road, colombo 4","phewage@gmail.com","male","1995-08-10","2020-11-01","CO202","hewagep1234",NULL),
+("T011","nisal silva","No.93, main street, ruwanwella","nisal67@gmail.com","male","1988-06-20","2020-11-01","CO204","nisal12",NULL),
+("T012","damith wekanda","No.79, udunuwara weediya, kandy","dami78@gmail.com","male","1979-05-03","2020-11-01","CO203","weke76",NULL),
+("T013","susil rathnayaka","89, warawala, ruwanwella","susil6@gmail.com","male","1969-04-05","2020-11-01","CO205","susa4",NULL),
+("T014","sanath gamage","No.69,main rd, higurala","sanath55@gmail.com","male","1978-05-09","2020-11-01","MA100","sanath4",NULL),
+("T015","piyathissa","89,ihala para, minneriya","piya45@gmail.com","male","1988-02-18","2020-11-01","MA101","piya4",NULL),
+("T016","nirmala silva","No.906,colombo rd, pilimathalawa","nsilva6@gmail.com","male","1989-03-28","2020-11-02","MA102","nsilva@4",NULL),
+("T017","samaraweera","No.8, mangalagama, molagoda","samaraweera5@gmail.com","male","1978-07-20","2020-11-02","MA103","samara1234",NULL),
+("T018","dilan padukka","No.48, padukka","dilan3@gmail.com","male","1988-03-30","2020-11-02","MA104","dilanp90",NULL),
+("T019","rasika peris","No.99, pallebedda","rasika4@gmail.com","female","1984-04-09","2020-11-02","MA105","rasikateach",NULL),
+("T020","hasaranga perera","No.398, main rd, pelmadulla","hasarangaperera34@gmail.com","male","1978-08-30","2020-11-02","MA200","hasara03",NULL);
+
+
+INSERT INTO Course values 
+("CO100","C programming","T001", NULL),
+("CO101","Python programming","T002", NULL),
+("CO102","Java programming","T003", NULL),
+("CO103","Web designing","T004", NULL),
+("CO104","Digital Design","T005", NULL),
+("CO105","Networking","T006", NULL),
+("CO200","Database Design","T008", NULL),
+("CO201","Digital Design","T009", NULL),
+("CO202","Computer Architecture","T010", NULL),
+("CO203","AI","T012", NULL),
+("CO204","Machine Learning","T011", NULL),
+("CO205","Android Applications","T013", NULL),
+("MA100","Calculus 1","T014", NULL),
+("MA101","Linear Algebra","T015", NULL),
+("MA102","Probability & Statistics","T016", NULL),
+("MA103","Differential Equations","T017", NULL),
+("MA104","Discrete maths","T018", NULL),
+("MA200","Calculus 2","T020", NULL),
+("MA201","Real Analysis","T007", NULL),
+("MA105","Numerical methods","T019", NULL);

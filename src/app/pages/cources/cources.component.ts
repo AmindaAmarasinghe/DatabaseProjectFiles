@@ -37,7 +37,7 @@ export class CourcesComponent implements OnInit {
   ngOnInit(): void {
     // this._activatedRoute.params.subscribe(parameter => {
     //  this.parameterValue = parameter.parameter
-    this.sharedService.sendEvent();
+    //this.sharedService.sendEvent();
     this.parameterValue = this._activatedRoute.snapshot.paramMap.get('email');
     console.log(this.parameterValue);
     this.clicked = false;

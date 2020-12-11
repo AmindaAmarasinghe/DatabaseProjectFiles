@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SharedServiceService } from 'src/app/services/shared-service.service';
 
 @Component({
   selector: 'app-teacher',
@@ -16,15 +17,15 @@ export class TeacherComponent implements OnInit {
   subject=[];
   
   list: string;
-  constructor(private http: HttpClient, private _activatedRoute1: ActivatedRoute , private router: Router) {
+  constructor(private http: HttpClient, private _activatedRoute1: ActivatedRoute ,private sharedService: SharedServiceService, private router: Router) {
     var myFormdata = new FormData();
     this.parameter = this._activatedRoute1.snapshot.paramMap.get('username');
     console.log(this.parameter);
     myFormdata.append('userId',this.parameter);
-    this.http.post('http://localhost:81/CO226/group13/mycources.php/',  myFormdata).subscribe((res: Response)=>{
+    this.http.post('http://localhost:81/CO226/group13/teachercourses.php/',  myFormdata).subscribe((res: Response)=>{
       this.mysubjects.push(res);
-      this.list=this.mysubjects[0][0].Enrolledcourses;
-      console.log(this.list);
+      this.list=this.mysubjects[0][0].courses;
+      console.log(this.mysubjects[0][0]);
       console.log(this.list.match(/.{1,5}/g));
       this.subject.push(this.list.match(/.{1,5}/g));
       
@@ -46,7 +47,7 @@ export class TeacherComponent implements OnInit {
   ngOnInit(): void {
     this.parameter = this._activatedRoute1.snapshot.paramMap.get('username');
     console.log(this.parameter);
-    
+    this.sharedService.sendEvent();
   }
 
 }

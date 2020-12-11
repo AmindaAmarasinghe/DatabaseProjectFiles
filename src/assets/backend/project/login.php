@@ -10,9 +10,8 @@ header("Content-Type: application/json; charset=UTF-8");
 $servername = "localhost:3307";
 $username = "root";
 $password = "";
-$dbname = "project";
-$success = '"success"';
-$returnnResult ;
+$dbname = "group13";
+
 
 $conn= mysqli_connect($servername, $username, $password);
 mysqli_select_db($conn, $dbname);
@@ -29,22 +28,23 @@ if(isset($_POST['myusername'])){
      //   fwrite($fp, json_encode($data));
     $sql = "SELECT * FROM student WHERE StudentId ='".$u_name."' AND Spassword='".$pwd."' limit 1";
     $result = mysqli_query($conn,$sql);
-
+    $myArr= array();
     if(mysqli_num_rows($result)==1){
        // header("location:registration.php");
-         $data = array("data" => "logged successully");
+         $data = "success";
          while ($row = $result->fetch_assoc()) {
             $myArr[]= $row;
         }
         //echo json_encode($data);
         fwrite($fp, json_encode($data));
-        echo json_encode($myArr);
+        echo json_encode($data);
         
     
     }else{
        
-        $data = array("data" => "incorrect");
-       fwrite($fp, json_encode($data));
+        $data2 = "incorrect";
+        fwrite($fp, json_encode($data2));
+        echo json_encode($data2);
     }
     fclose($fp);
 }

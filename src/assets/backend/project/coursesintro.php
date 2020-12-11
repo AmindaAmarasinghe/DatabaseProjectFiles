@@ -7,7 +7,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 $servername = "localhost:3307";
 $username = "root";
 $password = "";
-$dbname = "project";
+$dbname = "group13";
 
 $conn = new mysqli($servername,$username,$password,$dbname);
 if ($conn->connect_error) {

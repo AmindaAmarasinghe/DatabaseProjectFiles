@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  notlogged: boolean =true;
+  logged: boolean =false;
   teach: boolean = false;
   EventSubscription1:Subscription;
   EventSubscription2:Subscription;
@@ -20,26 +20,25 @@ export class HeaderComponent implements OnInit {
   EventSubscription0:Subscription;
   EventSubscription4:Subscription;
   result: string = '';
-
-  constructor(public dialog: MatDialog, public sharedService: SharedServiceService,private sharedServiceteach: SharedServiceService, private router : Router,private sharedServiceAdmin: SharedServiceService,private sharedService4: SharedServiceService,private sharedServiceNo: SharedServiceService) { 
+  empty:boolean=false;
+  constructor(public dialog: MatDialog, private sharedService: SharedServiceService,private sharedServiceteach: SharedServiceService, private router : Router,private sharedServiceAdmin: SharedServiceService,private sharedService4: SharedServiceService,private sharedServiceNo: SharedServiceService) { 
     this.EventSubscription1=this.sharedService.getEvent().subscribe(()=>{
-      this.notlogged = false;
-      this.teach=false;
+      this.logged = true;
+      console.log('logged')
     })
     this.EventSubscription2=this.sharedServiceteach.getEvent().subscribe(()=>{
       this.teach = false;
     })
     this.EventSubscription3=this.sharedServiceAdmin.getEvent().subscribe(()=>{
-      this.teach = false;
-      this.notlogged = false;
+      
+      this.logged = true;
     })
     this.EventSubscription4=this.sharedService4.getEvent().subscribe(()=>{
       this.teach = true;
       
     })
     this.EventSubscription0=this.sharedServiceNo.getEvent().subscribe(()=>{
-      this.teach = true;
-      this.notlogged=true;
+      this.empty=true;
       
     })
   }
@@ -76,7 +75,7 @@ export class HeaderComponent implements OnInit {
       this.result = dialogResult;
       if(this.result){
         this.router.navigate(['']);
-        this.notlogged = true;
+        this.logged = false;
       }
     });
   }

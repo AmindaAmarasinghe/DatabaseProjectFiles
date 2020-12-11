@@ -42,6 +42,24 @@ import { CO101Component } from './pages/courses/co101/co101.component';
 
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { TeacherWelcomeComponent } from './pages/teacher-welcome/teacher-welcome.component';
+import { Co102Component } from './pages/courses/co102/co102.component';
+import { Co103Component } from './pages/courses/co103/co103.component';
+import { Co104Component } from './pages/courses/co104/co104.component';
+import { Co105Component } from './pages/courses/co105/co105.component';
+import { Co200Component } from './pages/courses/co200/co200.component';
+import { Co201Component } from './pages/courses/co201/co201.component';
+import { Co202Component } from './pages/courses/co202/co202.component';
+import { Co203Component } from './pages/courses/co203/co203.component';
+import { Co204Component } from './pages/courses/co204/co204.component';
+import { Co205Component } from './pages/courses/co205/co205.component';
+import { MA100Component } from './pages/courses/ma100/ma100.component';
+import { MA101Component } from './pages/courses/ma101/ma101.component';
+import { MA102Component } from './pages/courses/ma102/ma102.component';
+import { MA103Component } from './pages/courses/ma103/ma103.component';
+import { MA104Component } from './pages/courses/ma104/ma104.component';
+import { MA105Component } from './pages/courses/ma105/ma105.component';
+import { MA200Component } from './pages/courses/ma200/ma200.component';
+import { MA201Component } from './pages/courses/ma201/ma201.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +82,25 @@ import { TeacherWelcomeComponent } from './pages/teacher-welcome/teacher-welcome
     CO101Component,
  
     NotFoundComponent,
-    TeacherWelcomeComponent
+    TeacherWelcomeComponent,
+    Co102Component,
+    Co103Component,
+    Co104Component,
+    Co105Component,
+    Co200Component,
+    Co201Component,
+    Co202Component,
+    Co203Component,
+    Co204Component,
+    Co205Component,
+    MA100Component,
+    MA101Component,
+    MA102Component,
+    MA103Component,
+    MA104Component,
+    MA105Component,
+    MA200Component,
+    MA201Component
   ],
   imports: [
     BrowserModule,
